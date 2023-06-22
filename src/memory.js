@@ -11,15 +11,11 @@ class MemoryGame {
          // ... write your code here
       if(!this.cards) return undefined;
 
-      let shuffledDeck = [];
-
       for(let i = this.cards.length - 1; i >= 0; i--) {
-          let selectCardIndex = Math.floor(Math.random() * i);
-          shuffledDeck.unshift(this.cards[selectCardIndex]);
-          this.cards.splice(selectCardIndex,1);
-      }
+          let selectCardIndex = Math.floor(Math.random() * (i + 1));
+          [this.cards[i], this.cards[selectCardIndex]] = [this.cards[selectCardIndex], this.cards[i]];
 
-      return this.cards = shuffledDeck;
+      }
   }
 
 
@@ -37,27 +33,10 @@ class MemoryGame {
 
   checkIfFinished() {
     // ... write your code here
-    if (!this.pairsGuessed || this.pairsGuessed < this.cards.length / 2) {
+      if(this.cards.length / 2 > this.pairsGuessed){
       return false;
     } else {
       return true;
     }
   }
-
-/* Shashika's code
-  if (this.pairsGuessed === 0) {
-    return false;
-  } else if (this.pairsGuessed < this.cards.length / 2) {
-    return false;
-  } else {
-    return true;
-  } */
-
-/* Nicola's code
-  if(this.pairsGuessed<this.cards.length/2) return false 
-    else return true
-  }
-  */
-
-
 }
