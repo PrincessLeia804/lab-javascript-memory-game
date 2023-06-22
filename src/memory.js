@@ -5,6 +5,8 @@ class MemoryGame {
     this.pickedCards = [];
     this.pairsClicked = 0;
     this.pairsGuessed = 0;
+    // invoke the method whenever the game is loaded
+    this.shuffleCard();
   }
 
   shuffleCards() {
